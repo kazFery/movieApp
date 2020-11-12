@@ -4,11 +4,25 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MovieController {
-    private static final String template = "Hello, %s!";
 
     @GetMapping("/movies/{id}")
-    public Movie getMovie (@RequestParam(value = "name", defaultValue = "World") String name){
-        return new Movie(1, String.format(template, name));
+    public Movie getMovie(@PathVariable Long id) {
+        return new Movie(1, "NoMovie");
+    }
+
+    @GetMapping("/movies")
+    public String allMovies() {
+        return "All";
+    }
+
+    @PostMapping("/movies")
+    public String addMovie(@RequestBody Movie newMovie) {
+        return newMovie.getTitle();
+    }
+
+    @DeleteMapping("/movies/{id}")
+    public String deleteMovie(@PathVariable Long id) {
+        return "Delete  " + id;
     }
 
 }
