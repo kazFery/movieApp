@@ -11,9 +11,4 @@ public class MovieController {
         return new Movie(1, String.format(template, name));
     }
 
-    @PostMapping("/post")
-    public String post(@RequestBody(required = false) String str) {
-        return "BODY: " + str;
-    }
-
 }
