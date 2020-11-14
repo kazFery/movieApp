@@ -1,5 +1,7 @@
-package com.example.demo.restservice;
+package com.example.demo.controller;
 
+import com.example.demo.model.Movie;
+import com.example.demo.service.MovieDB;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

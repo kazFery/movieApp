@@ -1,4 +1,6 @@
-package com.example.demo.restservice;
+package com.example.demo.service;
+
+import com.example.demo.model.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,5 @@ public class MovieDB {
     public List<Movie> getAllMovies() {
         return this.list;
     }
-
 
 }

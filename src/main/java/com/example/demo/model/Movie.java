@@ -1,4 +1,4 @@
-package com.example.demo.restservice;
+package com.example.demo.model;
 
 public class Movie {
     private final int id;
