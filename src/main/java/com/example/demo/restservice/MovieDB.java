@@ -1,12 +1,13 @@
 package com.example.demo.restservice;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MovieDB {
-    ArrayList<Movie> list;
+    List<Movie> list;
 
-    public MovieDB(){
+    public MovieDB() {
         list = new ArrayList<Movie>();
     }
 
@@ -14,21 +15,18 @@ public class MovieDB {
         this.list.add(newMovie);
     }
 
-    public void  deleteMovie(int id) throws ArrayIndexOutOfBoundsException {
-        if (id < this.list.size())
+    public void deleteMovie(int id) {
+        if (id >= 0 && id < list.size())
             this.list.remove(id);
-        else
-            throw  new ArrayIndexOutOfBoundsException();
     }
 
-    public Movie getMovie(int id){
+    public Movie getMovie(int id) {
         return this.list.get(id);
     }
 
-    public ArrayList<Movie> getAllMovies(){
+    public List<Movie> getAllMovies() {
         return this.list;
     }
-
 
 
 }
