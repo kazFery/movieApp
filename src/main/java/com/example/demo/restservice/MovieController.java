@@ -2,27 +2,30 @@ package com.example.demo.restservice;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class MovieController {
+    MovieDB myDB = new MovieDB();
 
     @GetMapping("/movies/{id}")
-    public Movie getMovie(@PathVariable Long id) {
-        return new Movie(1, "NoMovie");
+    public Movie getMovie(@PathVariable int id) {
+        return myDB.getMovie(id);
     }
 
     @GetMapping("/movies")
-    public String allMovies() {
-        return "All";
+    public List<Movie> allMovies() {
+        return myDB.getAllMovies();
     }
 
     @PostMapping("/movies")
-    public String addMovie(@RequestBody Movie newMovie) {
-        return newMovie.getTitle();
+    public void addMovie(@RequestBody Movie newMovie) {
+         myDB.addMovie(newMovie);
     }
 
     @DeleteMapping("/movies/{id}")
-    public String deleteMovie(@PathVariable Long id) {
-        return "Delete  " + id;
+    public void deleteMovie(@PathVariable int id) {
+         myDB.deleteMovie(id);
     }
 
 }
