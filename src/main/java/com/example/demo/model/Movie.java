@@ -1,8 +1,11 @@
 package com.example.demo.model;
 
+import org.springframework.data.annotation.Id;
+
 public class Movie {
-    private final int id;
-    private final String  title;
+    @Id
+    private int id;
+    private String  title;
 
 
     public Movie(int id, String title){

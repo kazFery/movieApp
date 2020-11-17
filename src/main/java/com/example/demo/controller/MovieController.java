@@ -1,33 +1,38 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Movie;
-import com.example.demo.service.MovieDB;
+import com.example.demo.service.MovieRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 public class MovieController {
-    MovieDB myDB = new MovieDB();
+
+    @Autowired
+    MovieRepository myDB;
 
     @GetMapping("/movies/{id}")
-    public Movie getMovie(@PathVariable int id) {
-        return myDB.getMovie(id);
+    public Movie getMovie(@PathVariable int id) throws NoSuchElementException {
+        return myDB.findById(id).orElseThrow();
     }
 
     @GetMapping("/movies")
-    public List<Movie> allMovies() {
-        return myDB.getAllMovies();
+    public Iterable<Movie> allMovies() {
+        return myDB.findAll();
     }
 
     @PostMapping("/movies")
     public void addMovie(@RequestBody Movie newMovie) {
-         myDB.addMovie(newMovie);
+        myDB.save(newMovie);
     }
 
     @DeleteMapping("/movies/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteMovie(@PathVariable int id) {
-         myDB.deleteMovie(id);
+        myDB.deleteById(id);
     }
 
 }
