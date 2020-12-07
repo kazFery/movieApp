@@ -1,5 +1,7 @@
 import MovieList from "./components/MovieList";
+import MovieForm from "./components/MovieForm";
 import React from "react";
+import * as api from "./api.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -8,17 +10,18 @@ class App extends React.Component {
   }
 
   render() {
-    return <MovieList movies={this.state.movies} />;
+    return (
+      <div>
+        <MovieList movies={this.state.movies} />
+        <MovieForm />
+      </div>
+    );
   }
 
   componentDidMount() {
-    const api = "http://localhost:3000/movies";
-
-    fetch(api, { method: "GET" })
-      .then((res) => res.json())
-      .then((movies) => {
-        this.setState({ movies: movies });
-      });
+    api.getMovies().then((movies) => {
+      this.setState({ movies: movies });
+    });
   }
 }
 
