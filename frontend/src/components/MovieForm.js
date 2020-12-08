@@ -15,9 +15,13 @@ export default class MovieForm extends React.Component {
   }
 
   handleSubmit(event) {
+    const movie = this.state;
     api.addMovie(this.state).then((res) => {
       if (!res.ok) {
         alert("Error when adding new movie!");
+      }
+      if (this.props.onAdd) {
+        this.props.onAdd(movie);
       }
     });
     event.preventDefault();

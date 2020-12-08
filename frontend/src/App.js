@@ -7,21 +7,29 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { movies: [] };
+    this.loadMovies = this.loadMovies.bind(this);
   }
 
   render() {
     return (
       <div>
-        <MovieList movies={this.state.movies} />
-        <MovieForm />
+        <MovieList
+          movies={this.state.movies}
+          onDelete={() => this.loadMovies()}
+        />
+        <MovieForm onAdd={(movie) => this.loadMovies()} />
       </div>
     );
   }
 
-  componentDidMount() {
+  loadMovies() {
     api.getMovies().then((movies) => {
       this.setState({ movies: movies });
     });
+  }
+
+  componentDidMount() {
+    this.loadMovies();
   }
 }
 

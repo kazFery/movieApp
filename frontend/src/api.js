@@ -16,3 +16,10 @@ export function addMovie(movie) {
     body: JSON.stringify(movie),
   });
 }
+
+export function deleteMovie(id) {
+  const api = baseUrl + `/movies/${id}`;
+  return fetch(api, {
+    method: "DELETE",
+  });
+}
