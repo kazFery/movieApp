@@ -17,6 +17,7 @@ export default class MovieList extends React.Component {
           ? this.props.movies.map((mv) => (
               <tr className="movie-row">
                 <td>{mv.title}</td>
+                <td>{mv.release_date}</td>
                 <td>
                   <button
                     onClick={() => {
