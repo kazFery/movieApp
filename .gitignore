@@ -37,3 +37,4 @@ out/
 .vscode/
 
 gcp_key.json
+frontend/node_modules
