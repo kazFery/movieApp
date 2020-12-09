@@ -1,4 +1,5 @@
 import React from "react";
+import "./MovieList.css";
 import * as api from "../api.js";
 
 export default class MovieForm extends React.Component {
@@ -29,7 +30,7 @@ export default class MovieForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form class="movie-form" onSubmit={this.handleSubmit}>
         <label>
           Title:
           <input

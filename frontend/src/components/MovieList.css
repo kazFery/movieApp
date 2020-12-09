@@ -1,8 +1,12 @@
 .movie-table {
+  padding: 50px, 20px, 50px, 20px;
   border: 1px solid black;
   border-collapse: collapse;
 }
 .movie-row {
   border: 1px solid black;
   border-collapse: collapse;
+}
+.movie-form {
+  padding: 200px;
 }
